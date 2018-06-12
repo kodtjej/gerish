@@ -18,6 +18,7 @@ func main() {
 			Aliases: []string{"s"},
 			Usage:   "starts a slow http server",
 			Action:  slow.CLI,
+			Flags:   slow.CLIFlags(),
 		},
 		{
 			Name:    "faulty",
