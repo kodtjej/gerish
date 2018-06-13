@@ -31,6 +31,7 @@ func main() {
 			Aliases: []string{"u"},
 			Usage:   "starts a http server that is unstable and might return error codes",
 			Action:  unstable.CLI,
+			Flags:   unstable.CLIFlags(),
 		},
 	}
 
