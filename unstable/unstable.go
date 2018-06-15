@@ -22,7 +22,7 @@ func unstable(c *cli.Context) gin.HandlerFunc {
 		atomic.AddInt64(&count, 1)
 
 		if math.Mod(float64(atomic.LoadInt64(&count)), float64(c.Int("interval"))) == 0 {
-			g.AbortWithStatus(http.StatusRequestTimeout)
+			g.AbortWithStatus(c.Int("code"))
 			return
 		}
 
@@ -38,6 +38,11 @@ func CLIFlags() []cli.Flag {
 				Name:  "interval, i",
 				Value: 2,
 				Usage: "How often the request should return an error",
+			},
+			cli.IntFlag{
+				Name:  "code, c",
+				Value: http.StatusRequestTimeout,
+				Usage: "Which HTTP status code the server should return on error",
 			},
 		},
 		httpserver.CLIFlags("unstable")...,
