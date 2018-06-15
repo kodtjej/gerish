@@ -6,6 +6,7 @@ import (
 
 	"github.com/urfave/cli"
 	"gitlab.com/xonvanetta/gerish/faulty"
+	"gitlab.com/xonvanetta/gerish/redirect"
 	"gitlab.com/xonvanetta/gerish/slow"
 	"gitlab.com/xonvanetta/gerish/unstable"
 )
@@ -32,6 +33,13 @@ func main() {
 			Usage:   "starts a http server that is unstable and might return error codes",
 			Action:  unstable.CLI,
 			Flags:   unstable.CLIFlags(),
+		},
+		{
+			Name:    "redirect",
+			Aliases: []string{"r"},
+			Usage:   "starts a http server redirects to different URL",
+			Action:  redirect.CLI,
+			Flags:   redirect.CLIFlags(),
 		},
 	}
 
