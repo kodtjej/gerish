@@ -13,11 +13,8 @@ func CLI(c *cli.Context) error {
 	return httpserver.New(c, redirect)
 }
 
-func redirect(c *cli.Context) gin.HandlerFunc {
-	return func(g *gin.Context) {
-		g.Redirect(http.StatusTemporaryRedirect, c.String("redirect-url"))
-		return
-	}
+func redirect(c *cli.Context, g *gin.Context) {
+	g.Redirect(http.StatusTemporaryRedirect, c.String("redirect-url"))
 }
 
 //CLIFlags the flags for the webserver
