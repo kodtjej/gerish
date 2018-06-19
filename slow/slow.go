@@ -15,11 +15,9 @@ func CLI(c *cli.Context) error {
 	return httpserver.New(c, slow)
 }
 
-func slow(c *cli.Context) gin.HandlerFunc {
-	return func(g *gin.Context) {
-		time.Sleep(time.Second * time.Duration(c.Int("seconds")))
-		g.JSON(http.StatusOK, gin.H{"Message": "Ok"})
-	}
+func slow(c *cli.Context, g *gin.Context) {
+	time.Sleep(time.Second * time.Duration(c.Int("seconds")))
+	g.JSON(http.StatusOK, gin.H{"Message": "Ok"})
 }
 
 //CLIFlags the flags for the webserver

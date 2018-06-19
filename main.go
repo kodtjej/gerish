@@ -8,7 +8,6 @@ import (
 	"gitlab.com/xonvanetta/gerish/faulty"
 	"gitlab.com/xonvanetta/gerish/redirect"
 	"gitlab.com/xonvanetta/gerish/slow"
-	"gitlab.com/xonvanetta/gerish/unstable"
 )
 
 func main() {
@@ -26,13 +25,7 @@ func main() {
 			Aliases: []string{"f"},
 			Usage:   "starts a faulty http server that returns error codes",
 			Action:  faulty.CLI,
-		},
-		{
-			Name:    "unstable",
-			Aliases: []string{"u"},
-			Usage:   "starts a http server that is unstable and might return error codes",
-			Action:  unstable.CLI,
-			Flags:   unstable.CLIFlags(),
+			Flags:   faulty.CLIFlags(),
 		},
 		{
 			Name:    "redirect",
