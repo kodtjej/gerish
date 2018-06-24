@@ -8,8 +8,16 @@ import (
 	"gitlab.com/xonvanetta/gerish/httpserver"
 )
 
-//CLI CLI
-func CLI(c *cli.Context) error {
+//CLICommand CLICommand
+var CLICommand = cli.Command{
+	Name:    "redirect",
+	Aliases: []string{"r"},
+	Usage:   "starts a http server redirects to different URL",
+	Action:  action,
+	Flags:   cliFlags(),
+}
+
+func action(c *cli.Context) error {
 	return httpserver.New(c, redirect)
 }
 
@@ -17,8 +25,7 @@ func redirect(c *cli.Context, g *gin.Context) {
 	g.Redirect(http.StatusTemporaryRedirect, c.String("redirect-url"))
 }
 
-//CLIFlags the flags for the webserver
-func CLIFlags() []cli.Flag {
+func cliFlags() []cli.Flag {
 	return append(
 		[]cli.Flag{
 			cli.StringFlag{
