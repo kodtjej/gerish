@@ -10,8 +10,16 @@ import (
 	"github.com/urfave/cli"
 )
 
-//CLI CLI
-func CLI(c *cli.Context) error {
+//CLICommand the command that runs the slow webserver
+var CLICommand = cli.Command{
+	Name:    "slow",
+	Aliases: []string{"s"},
+	Usage:   "starts a slow http server",
+	Action:  action,
+	Flags:   cliFlags(),
+}
+
+func action(c *cli.Context) error {
 	return httpserver.New(c, slow)
 }
 
@@ -20,8 +28,7 @@ func slow(c *cli.Context, g *gin.Context) {
 	g.JSON(http.StatusOK, gin.H{"Message": "Ok"})
 }
 
-//CLIFlags the flags for the webserver
-func CLIFlags() []cli.Flag {
+func cliFlags() []cli.Flag {
 	return append(
 		[]cli.Flag{
 			cli.IntFlag{
