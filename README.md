@@ -1,11 +1,32 @@
 
 # Gerish - for all your API-testing error, timeout, slowish needs
+[![Go Report Card](https://goreportcard.com/badge/gitlab.com/xonvanetta/gerish)]
 
-Available commands:
+## Installation
+To use gerish, you need to install go and set all the environment variables.
+When that is done you just run:
+``` 
+$ go get gitlab.com/xonvanetta/gerish
 ```
-slow, s starts a slow http server - default sleeps for 11 seconds before returning a response.
 
-faulty, f starts a faulty http server that only responds with error codes.
-
-unstable, u starts a http server that is unstable and responds with an error code every other request (by default).
+Then you can run gerish just by typing:
 ```
+$  gerish slow
+``` 
+## Commands
+
+- Slow
+  - When you need a server that responds really slowly.
+- Faulty
+  - When you need a server that responds only with errors.
+- Redirect
+  - When you want the server to respond with a temporary redirect.
+
+## Flags
+All of these commands have their own flags which you can list as so:
+``` 
+$ gerish Slow -h
+``` 
+
+### --interval
+All commands have this flag in common, by specifying this flag and an integer value, you can set how often the command should return an error.
