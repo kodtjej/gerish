@@ -2,15 +2,7 @@
 	"ImportPath": "gitlab.com/xonvanetta/gerish",
 	"GoVersion": "go1.10",
 	"GodepVersion": "v80",
-	"Packages": [
-		"./..."
-	],
 	"Deps": [
-		{
-			"ImportPath": "github.com/davecgh/go-spew/spew",
-			"Comment": "v1.1.0-12-g8991bc2",
-			"Rev": "8991bc29aa16c548c550c7ff78260e27b9ab7c73"
-		},
 		{
 			"ImportPath": "github.com/gin-contrib/sse",
 			"Rev": "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae"
@@ -59,16 +51,6 @@
 			"ImportPath": "github.com/modern-go/reflect2",
 			"Comment": "1.0.1",
 			"Rev": "4b7aa43c6742a2c18fdef89dd197aaae7dac7ccd"
-		},
-		{
-			"ImportPath": "github.com/pmezard/go-difflib/difflib",
-			"Comment": "v1.0.0",
-			"Rev": "792786c7400a136282c1664665ae0a8db921c6c2"
-		},
-		{
-			"ImportPath": "github.com/stretchr/testify/assert",
-			"Comment": "v1.2.2",
-			"Rev": "f35b8ab0b5a2cef36673838d662e249dd9c94686"
 		},
 		{
 			"ImportPath": "github.com/ugorji/go/codec",
