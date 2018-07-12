@@ -1,6 +1,8 @@
 
 # Gerish - for all your API-testing error, timeout, slowish needs
-[![Go Report Card](https://goreportcard.com/badge/gitlab.com/xonvanetta/gerish)]
+![Go Report Card](https://goreportcard.com/badge/gitlab.com/xonvanetta/gerish)
+[![build status](https://gitlab.com/xonvanetta/gerish/badges/master/build.svg)](https://gitlab.com/xonvanetta/gerish/commits/master)
+![Coverage report](https://gitlab.com/xonvanetta/gerish/badges/master/coverage.svg?job=coverage)
 
 ## Installation
 To use gerish, you need to install go and set all the environment variables.
