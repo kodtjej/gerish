@@ -7,15 +7,15 @@ stages:
 before_script:
   - mkdir -p ${GOPATH}/src/gitlab.com/xonvanetta/gerish
   - mkdir -p ${CI_PROJECT_DIR}/artifacts
-  - go get github.com/tools/godep
+  - go get github.com/golang/dep/cmd/dep
   - cp -r ${CI_PROJECT_DIR}/* ${GOPATH}/src/gitlab.com/xonvanetta/gerish/
   - cd ${GOPATH}/src/gitlab.com/xonvanetta/gerish
 
 build:
   stage: build
   script:
-    - godep restore
-    - godep go build -o ${CI_PROJECT_DIR}/artifacts/gerish
+    - dep ensure
+    - go build -o ${CI_PROJECT_DIR}/artifacts/gerish
   artifacts:
     paths:
       - artifacts
@@ -23,5 +23,5 @@ build:
 test:
   stage: test
   script:
-    - godep restore
-    - godep go test ./... -v -coverprofile .testCoverage.txt
+    - dep ensure
+    - go test ./... -v -coverprofile .testCoverage.txt
