@@ -24,4 +24,4 @@ test:
   stage: test
   script:
     - godep restore
-    - godep go test -v -coverprofile coverage.svg ./...
+    - godep go test ./... -v -coverprofile .testCoverage.txt
