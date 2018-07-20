@@ -16,17 +16,17 @@ $  gerish slow
 ``` 
 ## Commands
 
-- Slow
+- slow
   - When you need a server that responds really slowly.
-- Faulty
+- faulty
   - When you need a server that responds only with errors.
-- Redirect
+- redirect
   - When you want the server to respond with a temporary redirect.
 
 ## Flags
 All of these commands have their own flags which you can list as so:
 ``` 
-$ gerish Slow -h
+$ gerish slow -h
 ``` 
 
 ### --interval
