@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/urfave/cli"
@@ -18,5 +17,8 @@ func main() {
 		redirect.CLICommand,
 	}
 
-	fmt.Println(app.Run(os.Args))
+	err := app.Run(os.Args)
+	if err != nil {
+		panic(err)
+	}
 }
