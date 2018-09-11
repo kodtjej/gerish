@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"github.com/urfave/cli"
+	"gitlab.com/xonvanetta/gerish/connectionfail"
 	"gitlab.com/xonvanetta/gerish/faulty"
 	"gitlab.com/xonvanetta/gerish/redirect"
 	"gitlab.com/xonvanetta/gerish/slow"
@@ -15,6 +16,7 @@ func main() {
 		slow.CLICommand,
 		faulty.CLICommand,
 		redirect.CLICommand,
+		connectionfail.CLICommand,
 	}
 
 	err := app.Run(os.Args)
