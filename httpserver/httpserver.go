@@ -14,7 +14,9 @@ import (
 	"github.com/urfave/cli"
 )
 
-var count int64
+var request uint64
+
+var OKMessage = gin.H{"message": "ok"}
 
 //CLIFunc the func that is parsed down to the httpserver
 type CLIFunc func(*cli.Context, *gin.Context)
@@ -42,10 +44,10 @@ func New(c *cli.Context, callback CLIFunc) error {
 
 func unstable(c *cli.Context, callback CLIFunc) gin.HandlerFunc {
 	return func(g *gin.Context) {
-		atomic.AddInt64(&count, 1)
-
-		if math.Mod(float64(atomic.LoadInt64(&count)), float64(c.Int("interval"))) == 0 {
-			g.JSON(http.StatusOK, gin.H{"Message": "Ok"})
+		atomic.AddUint64(&request, 1)
+		rem := math.Mod(float64(atomic.LoadUint64(&request)), float64(c.Int("interval")))
+		if rem == 0 {
+			g.JSON(http.StatusOK, OKMessage)
 			return
 		}
 
@@ -70,13 +72,13 @@ func getLogger(c *cli.Context) (*logrus.Logger, error) {
 	return logger, nil
 }
 
-//CLIFlags the flags for the default webserver
+//CLIFlags the flags for the default httpserver
 func CLIFlags(urlPath string) []cli.Flag {
 	return []cli.Flag{
 		cli.StringFlag{
 			Name:  "port, p",
 			Value: "8080",
-			Usage: "The port to start the webserver on",
+			Usage: "The port to start the httpserver on",
 		},
 		cli.StringFlag{
 			Name:  "url",
@@ -85,8 +87,8 @@ func CLIFlags(urlPath string) []cli.Flag {
 		},
 		cli.IntFlag{
 			Name:  "interval, i",
-			Value: 1,
-			Usage: "How often the request should return an ok message",
+			Value: 0,
+			Usage: "How often the request should return an ok message, i.e. every (n)'th request",
 		},
 		cli.StringFlag{
 			Name:  "log-level",

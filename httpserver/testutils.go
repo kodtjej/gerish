@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	DefaultOkString = "{\"Message\":\"Ok\"}"
+	DefaultOkString = "{\"message\":\"ok\"}"
 )
 
 //NewTest use this to create a new test case with the httpserver and the provided callback into the function.

@@ -25,7 +25,7 @@ func action(c *cli.Context) error {
 
 func slow(c *cli.Context, g *gin.Context) {
 	time.Sleep(time.Second * time.Duration(c.Int("seconds")))
-	g.JSON(http.StatusOK, gin.H{"Message": "Ok"})
+	g.JSON(http.StatusOK, httpserver.OKMessage)
 }
 
 func cliFlags() []cli.Flag {
