@@ -22,6 +22,10 @@ $  gerish slow
   - When you need a server that responds only with errors.
 - redirect
   - When you want the server to respond with a temporary redirect.
+- connectionfail
+  - When you want a server giving you "Connection reset by peer".
+- healthy
+  - When you want a healthy http server that returns an optional body.
 
 ## Flags
 All of these commands have their own flags which you can list as so:
