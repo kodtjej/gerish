@@ -2,3 +2,6 @@
 main
 gerish
 gerish.exe
+vendor/
+.idea/
+cover.out
